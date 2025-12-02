@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .radio-container {
-  @apply bg-black/80 border-2 border-yellow-400 rounded-3xl p-8 max-w-2xl w-full backdrop-blur-lg shadow-2xl;
+  @apply bg-black bg-opacity-80 border-2 border-yellow-400 rounded-3xl p-8 max-w-2xl w-full backdrop-blur-lg shadow-2xl;
 }
 
 .now-playing {
@@ -39,11 +39,11 @@
 }
 
 .album-section {
-  @apply bg-yellow-500/5 border border-yellow-400/30 rounded-xl p-5;
+  @apply bg-yellow-500 bg-opacity-5 border border-yellow-400 border-opacity-30 rounded-xl p-5;
 }
 
 .album-title {
-  @apply text-yellow-400 text-xl font-bold mb-4 text-center border-b border-yellow-400/30 pb-3 drop-shadow-lg;
+  @apply text-yellow-400 text-xl font-bold mb-4 text-center border-b border-yellow-400 border-opacity-30 pb-3 drop-shadow-lg;
 }
 
 .album-tracklist {
@@ -51,11 +51,11 @@
 }
 
 .playlist-item {
-  @apply flex justify-between items-center p-4 border-b border-gray-600 cursor-pointer transition-all duration-300 rounded-lg hover:bg-yellow-400/10 hover:border-l-4 hover:border-yellow-400;
+  @apply flex justify-between items-center p-4 border-b border-gray-600 cursor-pointer transition-all duration-300 rounded-lg hover:bg-yellow-400 hover:bg-opacity-10 hover:border-l-4 hover:border-yellow-400;
 }
 
 .playlist-item.active {
-  @apply bg-yellow-400/20 border-l-4 border-yellow-400 shadow-lg;
+  @apply bg-yellow-400 bg-opacity-20 border-l-4 border-yellow-400 shadow-lg;
 }
 
 .track-info {
@@ -71,7 +71,7 @@
 }
 
 .upload-section {
-  @apply mb-8 p-6 bg-yellow-400/10 border border-yellow-400 rounded-xl text-center;
+  @apply mb-8 p-6 bg-yellow-400 bg-opacity-10 border border-yellow-400 rounded-xl text-center;
 }
 
 .upload-section h3 {
@@ -83,7 +83,7 @@
 }
 
 .equalizer-section {
-  @apply mb-8 p-6 bg-black/80 border-2 border-yellow-400 rounded-2xl backdrop-blur-lg;
+  @apply mb-8 p-6 bg-black bg-opacity-80 border-2 border-yellow-400 rounded-2xl backdrop-blur-lg;
 }
 
 .equalizer-controls {
@@ -115,7 +115,7 @@
 }
 
 .preset-btn {
-  @apply px-4 py-2 bg-yellow-400/10 border border-yellow-400 rounded-2xl text-yellow-400 cursor-pointer text-sm transition-all duration-300 hover:bg-yellow-400/20 hover:scale-105;
+  @apply px-4 py-2 bg-yellow-400 bg-opacity-10 border border-yellow-400 rounded-2xl text-yellow-400 cursor-pointer text-sm transition-all duration-300 hover:bg-yellow-400 hover:bg-opacity-20 hover:scale-105;
 }
 
 .preset-btn.active {
@@ -131,7 +131,7 @@
 }
 
 .band-slider {
-  @apply appearance-none bg-yellow-400/20 rounded-sm w-2 h-40 cursor-pointer transition-all duration-200 hover:bg-yellow-400/30;
+  @apply appearance-none bg-yellow-400 bg-opacity-20 rounded-sm w-2 h-40 cursor-pointer transition-all duration-200 hover:bg-yellow-400 hover:bg-opacity-30;
   writing-mode: bt-lr;
 }
 
@@ -144,7 +144,7 @@
 }
 
 .band-slider:hover {
-  @apply bg-yellow-400/30;
+  @apply bg-yellow-400 bg-opacity-30;
 }
 
 .band-label {
@@ -152,7 +152,7 @@
 }
 
 .eq-visualizer {
-  @apply h-24 bg-black/50 rounded-lg flex items-center justify-center relative overflow-hidden;
+  @apply h-24 bg-black bg-opacity-50 rounded-lg flex items-center justify-center relative overflow-hidden;
 }
 
 .visualizer-bars {
