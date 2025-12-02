@@ -1,0 +1,12 @@
+# CD Burner Program Dependencies
+# Install with: pip install -r requirements.txt
+
+# Audio processing library for MP3 to WAV conversion
+pydub==0.25.1
+
+# Additional audio codec support (optional, for better MP3 support)
+# ffmpeg-python==0.2.0
+
+# Note: You may also need to install ffmpeg separately on your system:
+# Windows: Download from https://ffmpeg.org/download.html
+# Add to PATH or place ffmpeg.exe in the same directory as this script
