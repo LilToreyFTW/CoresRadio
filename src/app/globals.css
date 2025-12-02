@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.radio-container {
+  @apply bg-black/80 border-2 border-yellow-400 rounded-3xl p-8 max-w-2xl w-full backdrop-blur-lg shadow-2xl;
+}
+
+.now-playing {
+  @apply bg-yellow-200 border border-yellow-300 rounded-xl p-5 mb-6 text-center;
+}
+
+.now-playing h3 {
+  @apply text-amber-800 mb-3;
+}
+
+.now-playing p {
+  @apply text-amber-800;
+}
+
+.audio-controls {
+  @apply mb-8;
+}
+
+.play-btn {
+  @apply bg-blue-600 text-white px-8 py-4 rounded-full text-xl font-bold transition-all duration-300 hover:bg-blue-700 hover:scale-105 active:scale-95;
+}
+
+.volume-slider {
+  @apply w-40;
+}
+
+.playlist {
+  @apply mb-8;
+}
+
+.albums-container {
+  @apply grid gap-6;
+}
+
+.album-section {
+  @apply bg-yellow-500/5 border border-yellow-400/30 rounded-xl p-5;
+}
+
+.album-title {
+  @apply text-yellow-400 text-xl font-bold mb-4 text-center border-b border-yellow-400/30 pb-3 drop-shadow-lg;
+}
+
+.album-tracklist {
+  @apply flex flex-col gap-2;
+}
+
+.playlist-item {
+  @apply flex justify-between items-center p-4 border-b border-gray-600 cursor-pointer transition-all duration-300 rounded-lg hover:bg-yellow-400/10 hover:border-l-4 hover:border-yellow-400;
+}
+
+.playlist-item.active {
+  @apply bg-yellow-400/20 border-l-4 border-yellow-400 shadow-lg;
+}
+
+.track-info {
+  @apply flex-1;
+}
+
+.track-title {
+  @apply font-bold text-white text-lg;
+}
+
+.track-artist {
+  @apply text-gray-400 text-sm;
+}
+
+.upload-section {
+  @apply mb-8 p-6 bg-yellow-400/10 border border-yellow-400 rounded-xl text-center;
+}
+
+.upload-section h3 {
+  @apply text-yellow-400 mb-3;
+}
+
+.upload-section p {
+  @apply text-white mb-3;
+}
+
+.equalizer-section {
+  @apply mb-8 p-6 bg-black/80 border-2 border-yellow-400 rounded-2xl backdrop-blur-lg;
+}
+
+.equalizer-controls {
+  @apply flex flex-col gap-6;
+}
+
+.eq-header {
+  @apply flex flex-col items-center gap-4;
+}
+
+.ai-status {
+  @apply flex items-center gap-3 text-sm;
+}
+
+.ai-indicator {
+  @apply w-3 h-3 bg-red-500 rounded-full animate-pulse;
+}
+
+.ai-indicator.active {
+  @apply bg-green-500 animate-pulse;
+}
+
+.ai-indicator.analyzing {
+  @apply bg-yellow-500 animate-pulse;
+}
+
+.eq-presets {
+  @apply flex flex-wrap gap-2 justify-center;
+}
+
+.preset-btn {
+  @apply px-4 py-2 bg-yellow-400/10 border border-yellow-400 rounded-2xl text-yellow-400 cursor-pointer text-sm transition-all duration-300 hover:bg-yellow-400/20 hover:scale-105;
+}
+
+.preset-btn.active {
+  @apply bg-yellow-400 text-black shadow-lg;
+}
+
+.eq-bands {
+  @apply grid grid-cols-8 gap-1;
+}
+
+.eq-band {
+  @apply flex flex-col items-center gap-1;
+}
+
+.band-slider {
+  @apply appearance-none bg-yellow-400/20 rounded-sm w-2 h-40 cursor-pointer transition-all duration-200 hover:bg-yellow-400/30;
+  writing-mode: bt-lr;
+}
+
+.band-slider::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 bg-yellow-400 rounded-full shadow-lg cursor-pointer;
+}
+
+.band-slider::-moz-range-thumb {
+  @apply w-4 h-4 bg-yellow-400 rounded-full cursor-pointer border-none;
+}
+
+.band-slider:hover {
+  @apply bg-yellow-400/30;
+}
+
+.band-label {
+  @apply text-xs text-gray-400 transform -rotate-45 whitespace-nowrap mt-2;
+}
+
+.eq-visualizer {
+  @apply h-24 bg-black/50 rounded-lg flex items-center justify-center relative overflow-hidden;
+}
+
+.visualizer-bars {
+  @apply flex items-end gap-1 h-full;
+}
+
+.visualizer-bar {
+  @apply rounded-sm flex-1 transition-all duration-100;
+}
