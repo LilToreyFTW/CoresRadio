@@ -179,7 +179,7 @@ export default function Equalizer({ currentPreset, aiStatus, onPresetChange, aud
   const updateVisualizer = () => {
     if (!analyserRef.current || !dataArrayRef.current) return
 
-    analyserRef.current.getByteFrequencyData(dataArrayRef.current)
+    analyserRef.current.getByteFrequencyData(dataArrayRef.current as Uint8Array)
 
     visualizerBarsRef.current.forEach((bar, index) => {
       if (bar && dataArrayRef.current) {
