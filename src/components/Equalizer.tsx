@@ -226,7 +226,7 @@ export default function Equalizer({ currentPreset, aiStatus, onPresetChange, aud
             <div key={index} className="flex flex-col items-center gap-1">
               <input
                 type="range"
-                className="appearance-none bg-yellow-400 bg-opacity-20 rounded-sm w-2 h-40 cursor-pointer transition-all duration-200 hover:bg-yellow-400 hover:bg-opacity-30"
+                className="[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-yellow-400 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:cursor-pointer [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:bg-yellow-400 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:shadow-lg [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:border-none appearance-none bg-yellow-400/20 rounded-sm w-2 h-40 cursor-pointer transition-all duration-200 hover:bg-yellow-400/30"
                 style={{ writingMode: 'bt-lr', pointerEvents: isAIAnalyzing ? 'none' : 'auto', opacity: isAIAnalyzing ? 0.6 : 1 }}
                 min="-20"
                 max="20"
