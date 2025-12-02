@@ -194,23 +194,25 @@ export default function Equalizer({ currentPreset, aiStatus, onPresetChange, aud
   }
 
   return (
-    <div className="equalizer-section">
+    <div className="mb-8 p-6 bg-black bg-opacity-80 border-2 border-yellow-400 rounded-2xl backdrop-blur-lg">
       <h3 className="text-yellow-400 mb-6 text-center drop-shadow-lg">
         🎛️ AI-Controlled Deep Sync 64-16kHz Equalizer
       </h3>
 
-      <div className="equalizer-controls">
-        <div className="eq-header mb-6">
-          <div className="ai-status mb-4">
-            <div className={`ai-indicator ${isAIAnalyzing ? 'active' : ''}`}></div>
+      <div className="flex flex-col gap-6">
+        <div className="mb-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className={`w-3 h-3 rounded-full ${isAIAnalyzing ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}></div>
             <span className="text-yellow-400">{aiStatus}</span>
           </div>
 
-          <div className="eq-presets flex flex-wrap gap-2 justify-center">
+          <div className="flex flex-wrap gap-2 justify-center">
             {Object.entries(AI_PRESETS).map(([key, preset]) => (
               <button
                 key={key}
-                className={`preset-btn ${currentPreset === key ? 'active' : ''}`}
+                className={`px-4 py-2 bg-yellow-400 bg-opacity-10 border border-yellow-400 rounded-2xl text-yellow-400 cursor-pointer text-sm transition-all duration-300 hover:bg-yellow-400 hover:bg-opacity-20 hover:scale-105 ${
+                  currentPreset === key ? 'bg-yellow-400 text-black shadow-lg' : ''
+                }`}
                 onClick={() => onPresetChange(key)}
               >
                 {preset.name}
@@ -219,35 +221,35 @@ export default function Equalizer({ currentPreset, aiStatus, onPresetChange, aud
           </div>
         </div>
 
-        <div className="eq-bands grid grid-cols-8 gap-1 mb-6">
+        <div className="grid grid-cols-8 gap-1 mb-6">
           {FREQUENCIES.map((freq, index) => (
-            <div key={index} className="eq-band flex flex-col items-center gap-1">
+            <div key={index} className="flex flex-col items-center gap-1">
               <input
                 type="range"
-                className="band-slider"
+                className="appearance-none bg-yellow-400 bg-opacity-20 rounded-sm w-2 h-40 cursor-pointer transition-all duration-200 hover:bg-yellow-400 hover:bg-opacity-30"
+                style={{ writingMode: 'bt-lr', pointerEvents: isAIAnalyzing ? 'none' : 'auto', opacity: isAIAnalyzing ? 0.6 : 1 }}
                 min="-20"
                 max="20"
                 value={sliderValues[index] || 0}
                 data-band-index={index}
                 onChange={updateFilter}
-                style={{ pointerEvents: isAIAnalyzing ? 'none' : 'auto', opacity: isAIAnalyzing ? 0.6 : 1 }}
               />
-              <div className="band-label text-xs text-gray-400">
+              <div className="text-xs text-gray-400 transform -rotate-45 whitespace-nowrap mt-2">
                 {freq >= 1000 ? `${(freq/1000).toFixed(1)}k` : freq}
               </div>
             </div>
           ))}
         </div>
 
-        <div className="eq-visualizer">
-          <div className="visualizer-bars flex items-end gap-1 h-24">
+        <div className="h-24 bg-black bg-opacity-50 rounded-lg flex items-center justify-center relative overflow-hidden">
+          <div className="flex items-end gap-1 h-full">
             {Array.from({ length: 64 }, (_, i) => (
               <div
                 key={i}
                 ref={(el) => {
                   if (el) visualizerBarsRef.current[i] = el
                 }}
-                className="visualizer-bar bg-gradient-to-t from-yellow-400 to-orange-500 rounded-sm flex-1"
+                className="bg-gradient-to-t from-yellow-400 to-orange-500 rounded-sm flex-1 transition-all duration-100"
                 style={{ height: '2px' }}
               />
             ))}

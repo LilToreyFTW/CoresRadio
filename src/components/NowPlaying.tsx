@@ -7,7 +7,7 @@ interface NowPlayingProps {
 
 export default function NowPlaying({ track, isPlaying }: NowPlayingProps) {
   return (
-    <div className="now-playing mb-6">
+    <div className="bg-yellow-200 border border-yellow-300 rounded-xl p-5 mb-6 text-center">
       <h3 className="text-amber-800 mb-3">Now Playing</h3>
       <p className="text-amber-800">
         {track ? `${track.title} - ${track.artist}` : 'Select a track to start playing'}

@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Equalizer range slider styling */
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #ffd700;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #ffd700;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+  cursor: pointer;
+  border: none;
+}
+
 .radio-container {
   @apply bg-black bg-opacity-80 border-2 border-yellow-400 rounded-3xl p-8 max-w-2xl w-full backdrop-blur-lg shadow-2xl;
 }

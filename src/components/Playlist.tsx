@@ -17,26 +17,28 @@ export default function Playlist({ tracks, currentTrackIndex, onTrackSelect }: P
   }, {} as Record<string, (Track & { index: number })[]>)
 
   return (
-    <div className="playlist mb-8">
+    <div className="mb-8">
       <h3 className="text-yellow-400 mb-6 text-center drop-shadow-lg">🎶 Core's Drip Playlist</h3>
-      <div className="albums-container">
+      <div className="grid gap-6">
         {Object.entries(albums).map(([albumName, albumTracks]) => (
-          <div key={albumName} className="album-section mb-4">
-            <div className="album-title">
+          <div key={albumName} className="bg-yellow-500 bg-opacity-5 border border-yellow-400 border-opacity-30 rounded-xl p-5 mb-4">
+            <div className="text-yellow-400 text-xl font-bold mb-4 text-center border-b border-yellow-400 border-opacity-30 pb-3 drop-shadow-lg">
               🎵 {albumName}
             </div>
-            <div className="album-tracklist">
+            <div className="flex flex-col gap-2">
               {albumTracks.map((track) => (
                 <div
                   key={track.index}
-                  className={`playlist-item ${
-                    track.index === currentTrackIndex ? 'active' : ''
+                  className={`flex justify-between items-center p-4 border-b border-gray-600 cursor-pointer transition-all duration-300 rounded-lg ${
+                    track.index === currentTrackIndex
+                      ? 'bg-yellow-400 bg-opacity-20 border-l-4 border-yellow-400 shadow-lg'
+                      : 'hover:bg-yellow-400 hover:bg-opacity-10 hover:border-l-4 hover:border-yellow-400'
                   }`}
                   onClick={() => onTrackSelect(track.index)}
                 >
-                  <div className="track-info">
-                    <div className="track-title">{track.title}</div>
-                    <div className="track-artist">{track.artist}</div>
+                  <div className="flex-1">
+                    <div className="font-bold text-white text-lg">{track.title}</div>
+                    <div className="text-gray-400 text-sm">{track.artist}</div>
                   </div>
                 </div>
               ))}

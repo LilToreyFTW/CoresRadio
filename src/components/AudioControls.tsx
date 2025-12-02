@@ -12,11 +12,11 @@ export default function AudioControls({
   onVolumeChange
 }: AudioControlsProps) {
   return (
-    <div className="audio-controls mb-8">
+    <div className="mb-8">
       <div className="flex items-center justify-center gap-6 mb-6">
         <button
           onClick={onPlayPause}
-          className="play-btn px-8 py-4 rounded-full text-xl font-bold transition-all duration-300 hover:scale-105 active:scale-95"
+          className="bg-blue-600 text-white px-8 py-4 rounded-full text-xl font-bold transition-all duration-300 hover:bg-blue-700 hover:scale-105 active:scale-95"
         >
           {isPlaying ? '⏸️ Pause Station' : '▶️ Play Station'}
         </button>
@@ -30,7 +30,7 @@ export default function AudioControls({
             step="0.1"
             value={volume}
             onChange={(e) => onVolumeChange(parseFloat(e.target.value))}
-            className="volume-slider w-40"
+            className="w-40"
           />
         </div>
       </div>

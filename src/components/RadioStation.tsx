@@ -77,14 +77,14 @@ export default function RadioStation() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="radio-container">
+      <div className="bg-black bg-opacity-80 border-2 border-yellow-400 rounded-3xl p-8 max-w-2xl w-full backdrop-blur-lg shadow-2xl">
         <h1 className="text-4xl font-bold text-yellow-400 mb-8 text-center drop-shadow-lg">
           🎵 Core's Radio 999.9FM
         </h1>
 
-        <div className="station-info text-center mb-8">
-          <div className="frequency text-lg text-gray-400 mb-2">Frequency: 999.9 FM</div>
-          <div className="description text-gray-300 leading-relaxed">
+        <div className="text-center mb-8">
+          <div className="text-lg text-gray-400 mb-2">Frequency: 999.9 FM</div>
+          <div className="text-gray-300 leading-relaxed">
             Atlanta's finest - straight from the streets! Premium drip playlist featuring Lil Baby's greatest hits.
             Stream to your car via Bluetooth for that authentic trap experience.
           </div>
@@ -108,16 +108,16 @@ export default function RadioStation() {
           onTrackSelect={handleTrackSelect}
         />
 
-        <div className="upload-section mb-8">
+        <div className="mb-8 p-6 bg-yellow-400 bg-opacity-10 border border-yellow-400 rounded-xl text-center">
           <h3 className="text-yellow-400 mb-3">📁 Add Your Music</h3>
           <p className="text-white mb-3">Upload MP3 files to create your custom playlist:</p>
           <input
             type="file"
             accept="audio/*"
             multiple
-            className="text-white"
+            className="text-white mb-3"
           />
-          <p className="text-sm text-gray-400 mt-2">Supported formats: MP3, WAV, OGG</p>
+          <p className="text-sm text-gray-400">Supported formats: MP3, WAV, OGG</p>
         </div>
 
         <Equalizer
