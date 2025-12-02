@@ -79,7 +79,7 @@ export default function Equalizer({ currentPreset, aiStatus, onPresetChange, aud
   const gainNodeRef = useRef<GainNode | null>(null)
   const filtersRef = useRef<BiquadFilterNode[]>([])
   const analyserRef = useRef<AnalyserNode | null>(null)
-  const dataArrayRef = useRef<Uint8Array | null>(null)
+  const dataArrayRef = useRef<Uint8Array>(new Uint8Array(0))
   const visualizerBarsRef = useRef<HTMLDivElement[]>([])
 
   useEffect(() => {
@@ -108,7 +108,8 @@ export default function Equalizer({ currentPreset, aiStatus, onPresetChange, aud
       const source = audioContext.createMediaElementSource(audioElement)
 
       analyser.fftSize = 256
-      const dataArray = new Uint8Array(analyser.frequencyBinCount) as Uint8Array<ArrayBuffer>
+      const bufferLength = analyser.frequencyBinCount
+      const dataArray = new Uint8Array(bufferLength)
 
       // Create filters for each frequency band
       const filters = FREQUENCIES.map(freq => {
@@ -179,7 +180,7 @@ export default function Equalizer({ currentPreset, aiStatus, onPresetChange, aud
   const updateVisualizer = () => {
     if (!analyserRef.current || !dataArrayRef.current) return
 
-    analyserRef.current.getByteFrequencyData(dataArrayRef.current as Uint8Array)
+    analyserRef.current.getByteFrequencyData(dataArrayRef.current)
 
     visualizerBarsRef.current.forEach((bar, index) => {
       if (bar && dataArrayRef.current) {
