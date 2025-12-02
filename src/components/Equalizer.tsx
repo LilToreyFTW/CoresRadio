@@ -79,7 +79,7 @@ export default function Equalizer({ currentPreset, aiStatus, onPresetChange, aud
   const gainNodeRef = useRef<GainNode | null>(null)
   const filtersRef = useRef<BiquadFilterNode[]>([])
   const analyserRef = useRef<AnalyserNode | null>(null)
-  const dataArrayRef = useRef<Uint8Array>(new Uint8Array(0))
+  const dataArrayRef = useRef<Uint8Array<ArrayBuffer> | null>(null)
   const visualizerBarsRef = useRef<HTMLDivElement[]>([])
 
   useEffect(() => {
@@ -109,7 +109,7 @@ export default function Equalizer({ currentPreset, aiStatus, onPresetChange, aud
 
       analyser.fftSize = 256
       const bufferLength = analyser.frequencyBinCount
-      const dataArray = new Uint8Array(bufferLength)
+      const dataArray = new Uint8Array(bufferLength) as Uint8Array<ArrayBuffer>
 
       // Create filters for each frequency band
       const filters = FREQUENCIES.map(freq => {
@@ -180,14 +180,14 @@ export default function Equalizer({ currentPreset, aiStatus, onPresetChange, aud
   const updateVisualizer = () => {
     if (!analyserRef.current || !dataArrayRef.current) return
 
-    analyserRef.current.getByteFrequencyData(dataArrayRef.current)
+    analyserRef.current.getByteFrequencyData(dataArrayRef.current!)
 
     visualizerBarsRef.current.forEach((bar, index) => {
       if (bar && dataArrayRef.current) {
         const value = dataArrayRef.current[index] || 0
         const percent = (value / 255) * 100
         bar.style.height = percent + '%'
-        bar.style.opacity = 0.3 + (percent / 100) * 0.7
+        bar.style.opacity = (0.3 + (percent / 100) * 0.7).toString()
       }
     })
 
@@ -228,7 +228,7 @@ export default function Equalizer({ currentPreset, aiStatus, onPresetChange, aud
               <input
                 type="range"
                 className="[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-yellow-400 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:cursor-pointer [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:bg-yellow-400 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:shadow-lg [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:border-none appearance-none bg-yellow-400/20 rounded-sm w-2 h-40 cursor-pointer transition-all duration-200 hover:bg-yellow-400/30"
-                style={{ writingMode: 'bt-lr', pointerEvents: isAIAnalyzing ? 'none' : 'auto', opacity: isAIAnalyzing ? 0.6 : 1 }}
+                style={{ writingMode: 'bt-lr' as any, pointerEvents: isAIAnalyzing ? 'none' : 'auto', opacity: isAIAnalyzing ? 0.6 : 1 }}
                 min="-20"
                 max="20"
                 value={sliderValues[index] || 0}
