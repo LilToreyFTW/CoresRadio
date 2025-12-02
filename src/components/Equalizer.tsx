@@ -108,7 +108,7 @@ export default function Equalizer({ currentPreset, aiStatus, onPresetChange, aud
       const source = audioContext.createMediaElementSource(audioElement)
 
       analyser.fftSize = 256
-      const dataArray = new Uint8Array(analyser.frequencyBinCount)
+      const dataArray = new Uint8Array(analyser.frequencyBinCount) as Uint8Array<ArrayBuffer>
 
       // Create filters for each frequency band
       const filters = FREQUENCIES.map(freq => {
